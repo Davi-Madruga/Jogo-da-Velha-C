@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
 	
-	int l, c, linha = 0, coluna = 0;
+	int l, c, linha = 0, coluna = 0, playagain = 0;
 	char marca = 'O';
 	bool gameover = false;
 	char lista[3][3] = {{' ', ' ', ' '},{' ', ' ', ' '},{' ', ' ', ' '}};
@@ -54,8 +54,36 @@ int main(int argc, char *argv[]) {
 		}
 	if (lista[0][0] == lista[1][1] && lista[0][0] == lista[2][2] && lista[0][0] != ' ' || 
 	lista[0][2] == lista[1][1] && lista[0][2] == lista[2][0] && lista[0][2] != ' ') gameover = true;
-	}
+
 	
+	//Mensagem final
+	if(gameover == true){
+	for(l=0;l<3;l++){
+		for(c=0;c<3;c++){
+			printf("%c",lista[l][c]);
+			if (c < 2) printf("|");
+		}
+		if (l < 2) printf("\n------\n");
+	}
+	printf("\n\nJogador %c Vence!\n",marca);
+	printf("Deseja jogar novamente?\n[1]SIM\n[2]NAO\n -> ");
+	scanf("%d",&playagain);
+	printf("\n\n");
+	if (playagain == 1) {
+        for(l=0;l<3;l++){
+            for(c=0;c<3;c++){
+                lista[l][c] = ' ';
+            }
+        }
+        marca = 'O'; 
+        gameover = false;
+        continue;
+        
+	} else{
+		printf("\nObrigado por jogar!\n");
+	}
+	}
+	}
 	printf("\n\n");
 	return 0;
 }
