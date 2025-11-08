@@ -11,8 +11,7 @@ int main(int argc, char *argv[]) {
 	
 	while(!gameover){
 		
-	if (marca == 'X') marca = 'O';
-	else marca = 'X';
+
 	
 	//Printar tabuleiro
 	for(l=0;l<3;l++){
@@ -22,19 +21,30 @@ int main(int argc, char *argv[]) {
 		}
 		if (l < 2) printf("\n------\n");
 	}
-	printf("\nVez do jogador %c",marca);
+	
+	//Celula Marcada
+	if (marca == 'X') marca = 'O';
+	else marca = 'X';
+	printf("\n\nVez do jogador %c",marca);
+	
+	while(1){
 	printf("\nLinha: ");
 	scanf("%d",&linha);
+	
 	printf("Coluna: ");
 	scanf("%d",&coluna);
-	
-	if (lista[linha][coluna] != ' '){
+	printf("\n");
+	if(lista[linha][coluna] == ' '){
+		lista[linha][coluna] = marca;
+		break;
+	}else if (lista[linha][coluna] == 'O' || lista[linha][coluna] == 'X'){
 		printf("Celula preenchida\n");
 		continue;
+	} else{
+		printf("Inválido");
 	}
-	else {
-		lista[linha][coluna] = marca;
 	}
+	
 	//verificar vencedor
 	for(l=0;l<3;l++){
 		if(lista[l][0] != ' ' && lista[l][0] == lista[l][1] && lista[l][0] == lista[l][2]) gameover = true;
