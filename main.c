@@ -10,9 +10,11 @@ int main(int argc, char *argv[]) {
 	char lista[3][3] = {{' ', ' ', ' '},{' ', ' ', ' '},{' ', ' ', ' '}};
 	
 	while(!gameover){
-		
+	//Troca da Marcação 
+	if (marca == 'X') marca = 'O';
+	else marca = 'X';
 
-	
+	while(1){
 	//Printar tabuleiro
 	for(l=0;l<3;l++){
 		for(c=0;c<3;c++){
@@ -21,27 +23,25 @@ int main(int argc, char *argv[]) {
 		}
 		if (l < 2) printf("\n------\n");
 	}
-	
-	//Celula Marcada
-	if (marca == 'X') marca = 'O';
-	else marca = 'X';
 	printf("\n\nVez do jogador %c",marca);
 	
-	while(1){
+	//Receber a entrada
 	printf("\nLinha: ");
 	scanf("%d",&linha);
 	
 	printf("Coluna: ");
 	scanf("%d",&coluna);
 	printf("\n");
+	
+	//Verificar celula valida
 	if(lista[linha][coluna] == ' '){
 		lista[linha][coluna] = marca;
 		break;
 	}else if (lista[linha][coluna] == 'O' || lista[linha][coluna] == 'X'){
-		printf("Celula preenchida\n");
+		printf("Celula preenchida\n\n");
 		continue;
 	} else{
-		printf("Inválido");
+		printf("Invalido\n\n");
 	}
 	}
 	
