@@ -46,14 +46,14 @@ int main() {
 				scanf("%d",&coluna);
 				
 				if (linha < 0 || linha > 2 || coluna < 0 || coluna > 2){
-					printf("Posição inválida!\n");
+					printf("Posicao invalida!\n");
 					continue;
 				}
 				if(lista[linha][coluna] == ' '){
 					lista[linha][coluna] = marca;
 					break;
 				}else{
-					printf("Célula preenchida, tente novamente.\n");
+					printf("Celula preenchida, tente novamente.\n");
 				}
 			}
 		}
